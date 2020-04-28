@@ -4,6 +4,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm api`
+
+Runs the mock API in development mode.<br />
+Open [http://localhost:3001](http://localhost:3001) to hit its end points.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the editor (assuming you have eslint extension on VScode).
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
