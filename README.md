@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm api`
+### `npm run api`
 
 Runs the mock API in development mode.<br />
 Open [http://localhost:3001](http://localhost:3001) to hit its end points.
