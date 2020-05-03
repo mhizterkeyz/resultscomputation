@@ -1,9 +1,8 @@
 var { Schema, model } = require("mongoose");
 
 var NotificationsSchema = new Schema({
-  user: {
+  user_id: {
     type: Schema.Types.ObjectId,
-    ref: "users",
     required: true,
   },
   notification: {

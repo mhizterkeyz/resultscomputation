@@ -1,6 +1,8 @@
 var router = require("express").Router();
 var Controller = require("./administratorController");
 
+router.use(require("../groupAdministrators/controller").EFAD(true, true));
+
 /**
  * Invites routes
  */
@@ -10,6 +12,29 @@ router
   .get(Controller.getOneInvite)
   .delete(Controller.deleteInvite)
   .put(Controller.updateInvite);
+
+/**
+ * Notifications Operation
+ */
+router
+  .route("/notifications")
+  .get(require("../lecturers/controller").notifications);
+router
+  .route("/notifications/:id")
+  .get(require("../lecturers/controller").notifications);
+
+/**
+ * Result Operations
+ */
+router
+  .route("/results")
+  .get(Controller.get_results())
+  .delete(
+    require("../groupAdministrators/controller").extractCourse(),
+    Controller.reject_result,
+    Controller.get_results("Result rejected for reanalysis")
+  )
+  .put(Controller.save_result, Controller.get_results("Result approved"));
 
 /**
  * GroupRoutes
@@ -33,6 +58,22 @@ router
   .get(Controller.groupRoute, Controller.getOneGroup)
   .put(Controller.groupRoute, Controller.updateGroup)
   .delete(Controller.groupRoute, Controller.deleteGroup);
+
+/**
+ * App options
+ */
+router
+  .route("/options")
+  .get(function (req, res) {
+    return res.status(200).json({ message: "", data: req.app_defaults });
+  })
+  .put(function (req, res, next) {
+    req.validate({ semester: "number", academic_year: "number" }) &&
+      req.app_defaults.update(req.body, function (err, updated) {
+        if (err) return next(err);
+        next();
+      });
+  }, Controller.appDefaults(true, "Options updated!"));
 
 /**
  * Administrator Routes

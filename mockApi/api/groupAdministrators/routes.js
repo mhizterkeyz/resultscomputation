@@ -73,6 +73,22 @@ router
   .put(Controller.getOneCourse(true), Controller.updateCourse);
 
 /**
+ * Result Operations
+ */
+router
+  .route("/results")
+  .get(Controller.get_results())
+  .delete(
+    Controller.extractCourse(),
+    Controller.reject_result,
+    Controller.get_results("Result rejected for reanalysis")
+  )
+  .put(
+    Controller.save_result,
+    Controller.get_results("Result sent for review")
+  );
+
+/**
  * Group Administrator's Routes
  */
 router
@@ -84,5 +100,7 @@ router
     });
   })
   .put(Controller.updateAdmin);
+router.route("/notifications").get(Controller.notifications);
+router.route("/notifications/:id").get(Controller.notifications);
 
 module.exports = router;

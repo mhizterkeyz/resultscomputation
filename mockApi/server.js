@@ -9,27 +9,26 @@ require("mongoose").connect(config.db.url, {
 });
 if (config.seed) require("./utils/seed");
 
+app.use(express.static(__dirname + "/client"));
 require("./middleware/appMiddleware")(app);
 
-app.get("/", function (req, res) {
-  res.sendFile(`${__dirname}/client/index.html`, function (err) {
-    if (err) {
-      res.status(404).json({
-        message: "File not found",
-        data: {},
-      });
-    }
-  });
-});
 app.use("/api", api);
 app.use("/auth", require("./auth/routes"));
 app.use(function (err, req, res, next) {
   if (err) {
+    var statusCode = 500;
+    if (err.name.toLowerCase().indexOf("unauthorized") !== -1) statusCode = 401;
+    if (
+      err.name.toLowerCase().indexOf("validation") !== -1 ||
+      err.name.toLowerCase().indexOf("cast") !== -1
+    )
+      statusCode = 400;
     console.log(err.message);
-    res.status(500).json({
-      message: "An unexpected error has occured",
+    res.status(statusCode).json({
+      message: err.message,
       data: {
-        error: err.message,
+        error: err._message,
+        stack: err.stack,
       },
     });
   }

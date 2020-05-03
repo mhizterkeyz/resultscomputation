@@ -26,7 +26,7 @@ var CoursesSchema = new Schema({
   },
   lecturer: {
     type: Schema.Types.ObjectId,
-    ref: "lecturers",
+    ref: "Users",
   },
 });
 

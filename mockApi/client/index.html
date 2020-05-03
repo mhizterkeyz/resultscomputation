@@ -4,22 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-      h1 {
-        text-align: center;
-        font-family: "Courier New", Courier, monospace;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Hey</h1>
+    <p class="top-heading">Routes</p>
+    <div class="centered-box routes-box">
+      <ul class="list-unstyled routes">
+        <li>
+          <a class="link" href="#">http://localhost:3001/api/administrator</a>
+          <span class="type">Post</span>
+          <div class="description">
+            <p class="minor-heading">Requirements</p>
+            <em>username</em><em>password</em><em>email</em><em>name</em
+            ><em>invite_token</em>
+            <p class="minor-heading">Result</p>
+            <em>creates an app level administrator</em>
+            <p class="minor-heading">Returns</p>
+            <em>username</em><em>email</em><em>name</em><em>access_token</em>
+          </div>
+          <span class="type">GET</span>
+          <div class="description">
+            <p class="minor-heading">Requirements</p>
+            <em>Authorization header with an access_token</em>
+            <p class="minor-heading">Returns</p>
+            <em>returns all app level administrators</em>
+          </div>
+        </li>
+      </ul>
+    </div>
   </body>
 </html>

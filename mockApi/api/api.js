@@ -12,6 +12,8 @@ function routeProtect(criteria) {
   };
 }
 
+router.use(require("./administrators/administratorController").appDefaults());
+
 /**
  * Signup Routes
  */
@@ -23,11 +25,15 @@ router.post(
   "/groupadministrator",
   require("./groupAdministrators/controller").createGroupAdmin
 );
-
 router.post(
   "/student",
   require("./groupAdministrators/controller").EFAD(true),
   require("./students/controller").createStudent
+);
+router.post(
+  "/lecturer",
+  require("./groupAdministrators/controller").EFAD(true),
+  require("./lecturers/controller").createLecturer
 );
 
 /**
@@ -53,6 +59,13 @@ router.use(
   getFreshUser(),
   routeProtect("student"),
   require("./students/routes")
+);
+router.use(
+  "/lecturer",
+  decodeToken(),
+  getFreshUser(),
+  routeProtect("lecturer"),
+  require("./lecturers/routes")
 );
 
 module.exports = router;

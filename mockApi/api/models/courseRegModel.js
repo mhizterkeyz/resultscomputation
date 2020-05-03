@@ -3,7 +3,7 @@ var { Schema, model } = require("mongoose");
 var CourseRegSchema = new Schema({
   course: {
     type: Schema.Types.ObjectId,
-    ref: "group_courses",
+    ref: "courses",
     required: true,
   },
   year_registered: {

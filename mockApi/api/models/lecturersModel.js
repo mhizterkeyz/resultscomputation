@@ -12,12 +12,6 @@ var LecturersSchema = new Schema({
     ref: "institutional_groups",
     required: true,
   },
-  courses_assigned: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "courses",
-    },
-  ],
 });
 
 module.exports = model("lecturers", LecturersSchema);
