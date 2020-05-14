@@ -26,6 +26,10 @@ exports.createStudent = function (req, res, next) {
       student_set: "required|number",
       faculty: "required|string",
       department: "required|string",
+      phone: "required",
+      lga: "required|string",
+      state_of_origin: "required|string",
+      address: "required|string",
     })
   )
     return;

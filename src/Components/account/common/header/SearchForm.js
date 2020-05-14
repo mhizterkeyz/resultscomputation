@@ -1,16 +1,24 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function SearchForm({ toggled, onToggle }) {
+export default function SearchForm() {
   return (
-    <div className={"animated-search p-relative " + (toggled? '':'hidden')}>
+    <div className={"animated-search p-relative "}>
       <form>
-        <div className="input">
-          <input type="search" name="searchQuery" id="searchQuery" placeholder="Search" />
-          <button type="submit" className="btn btn-primary"><FontAwesomeIcon className="fa fa-search" icon="search"></FontAwesomeIcon></button>
-        </div>
+        <button type="submit" className="btn btn-default">
+          <FontAwesomeIcon
+            className="fa fa-search"
+            icon="search"
+          ></FontAwesomeIcon>
+        </button>
+        <input
+          aria-label="search input"
+          type="search"
+          name="searchQuery"
+          id="searchQuery"
+          placeholder="Type in to search..."
+        />
       </form>
-      <button className="animated-search-toggle" onClick={onToggle}><FontAwesomeIcon className="fa fa-search" icon={toggled? "times":"search"}></FontAwesomeIcon></button>
     </div>
   );
 }

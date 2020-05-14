@@ -19,10 +19,12 @@ router.use(require("./administrators/administratorController").appDefaults());
  */
 router.post(
   "/administrator",
+  require("./groupAdministrators/controller").EFAD(true),
   require("./administrators/administratorController").createAppAdmin
 );
 router.post(
   "/groupadministrator",
+  require("./groupAdministrators/controller").EFAD(true),
   require("./groupAdministrators/controller").createGroupAdmin
 );
 router.post(
@@ -67,5 +69,7 @@ router.use(
   routeProtect("lecturer"),
   require("./lecturers/routes")
 );
+
+router.use("/", require("./generalRoute/routes"));
 
 module.exports = router;

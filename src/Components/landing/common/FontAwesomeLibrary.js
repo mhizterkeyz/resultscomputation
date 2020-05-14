@@ -7,6 +7,12 @@ import {
   faUser,
   faEllipsisV,
   faBars,
+  faLock,
+  faCircleNotch,
+  faUniversity,
+  faUsers,
+  faUserGraduate,
+  faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default library.add(
@@ -16,5 +22,11 @@ export default library.add(
   faBell,
   faUser,
   faEllipsisV,
-  faBars
+  faBars,
+  faLock,
+  faCircleNotch,
+  faUniversity,
+  faUsers,
+  faUserGraduate,
+  faBuilding
 );

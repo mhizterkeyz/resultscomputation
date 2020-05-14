@@ -6,6 +6,7 @@ exports.signin = function (req, res) {
     message: "Signin successful!",
     data: {
       access_token,
+      ...req.user.toJson(),
     },
   });
 };

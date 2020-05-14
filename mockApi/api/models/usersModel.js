@@ -24,6 +24,22 @@ var UsersSchema = new Schema({
     type: String,
     required: true,
   },
+  phone: {
+    type: Number,
+    required: true,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
+  lga: {
+    type: String,
+    required: true,
+  },
+  state_of_origin: {
+    type: String,
+    required: true,
+  },
 });
 
 UsersSchema.pre("save", function (next) {

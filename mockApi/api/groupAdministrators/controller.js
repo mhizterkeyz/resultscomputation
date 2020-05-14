@@ -1278,6 +1278,10 @@ exports.createGroupAdmin = function (req, res, next) {
       email: "required|string",
       invite_token: "required|string",
       password: "required|string",
+      phone: "required",
+      lga: "required|string",
+      state_of_origin: "required|string",
+      address: "required|string",
     })
   )
     return;

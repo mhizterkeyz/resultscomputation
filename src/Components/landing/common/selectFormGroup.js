@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputFormGroup = ({
+const SelectFormGroup = ({
   cols = "",
   feedback,
   value,
@@ -9,10 +9,12 @@ const InputFormGroup = ({
   name,
   type = "text",
   valid,
+  options = [],
   required = false,
 }) => (
   <div className={cols + " form-group"}>
-    <input
+    <label htmlFor={placeholder}>{placeholder} :</label>
+    <select
       className={
         valid
           ? "form-control is-valid"
@@ -22,11 +24,18 @@ const InputFormGroup = ({
       }
       onChange={onChange}
       value={value}
-      type={type}
       name={name}
-      placeholder={placeholder}
+      id={placeholder}
       required={required}
-    />
+    >
+      {options.map((opt) => {
+        return (
+          <option key={`${placeholder}_${opt}`} value={opt}>
+            {opt}
+          </option>
+        );
+      })}
+    </select>
     <div
       className={
         valid ? "valid-feedback" : valid == null ? "d-none" : "invalid-feedback"
@@ -37,4 +46,4 @@ const InputFormGroup = ({
   </div>
 );
 
-export default InputFormGroup;
+export default SelectFormGroup;

@@ -41,7 +41,7 @@ exports.verifyUser = function () {
         message: "Username and password is required",
         data: {},
       });
-    User.findOne({ username }).then(
+    User.findOne({ $or: [{username}, {email: username}] }).then(
       function (user) {
         if (!user)
           return res.status(401).json({
